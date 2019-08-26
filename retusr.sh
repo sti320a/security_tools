@@ -1,5 +1,7 @@
 #! /bin/sh
-# Useage:
+# To use for retrieving invalid username of failed login from /var/log/secure
+#
+# [Useage]
 # sh retusr.sh [filename]
 # ex) sh retusr.sh error.log
 
