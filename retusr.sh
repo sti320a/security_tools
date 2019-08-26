@@ -1,5 +1,7 @@
 #! /bin/sh
-# cat ./target/sshlog.txt | awk 'match($0, /user.*from/){print substr($0, RSTART+5, RLENGTH-10)}'
+# Useage:
+# sh retusr.sh [filename]
+# ex) sh retusr.sh error.log
 
 _retrieve_username () {
     awk 'match($0, /user.*from/){print substr($0, RSTART+5, RLENGTH-10)}' $(cat -)
