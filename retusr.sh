@@ -1,5 +1,6 @@
 #! /bin/sh
-# To use for retrieving invalid username of failed login from /var/log/secure
+# To use for retrieving invalid username 
+#   of failed login from /var/log/secure
 #
 # [Useage]
 # sh retusr.sh [filename]
