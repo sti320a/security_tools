@@ -1,8 +1,6 @@
 #! /bin/sh
 
-reqlog() {
-    # $1 hostname
-    scp $1:/var/log/secure ./sshlog.txt
-}
+# $1 hostname
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 
-reqlog
+scp $1@$2:/var/log/secure ./sshlog${TIMESTAMP}.txt
