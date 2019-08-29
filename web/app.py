@@ -35,5 +35,14 @@ def test():
     return render_template('idx.html', logs=logs)
 
 
+def insert_log_to_db(log_file_path: str) -> bool:
+    with open(log_file_path, 'r') as f:
+        log_text = f.read()
+        print(log_text)
+        f.close()
+
+    return False
+
+
 if __name__ == '__main__':
     app.run()
