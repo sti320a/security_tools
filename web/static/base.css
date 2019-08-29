@@ -1,0 +1,23 @@
+:root {
+    --main-green: #009F8C;
+    --purple: #744199;
+    --orange: #DA5019;
+    --yellow: #EDAD0B;
+    --sub-green: #23AC0E;
+    --blue: #007FB1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--main-green);
+    height: 32px;
+    width: 100%;
+}
