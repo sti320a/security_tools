@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/sh
 # $1 username
 # $2 hostname
 # $3 path to save
@@ -7,4 +7,4 @@
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 PATH=$3
 
-scp $1@$2:/var/log/secure ${PATH}/sshlog-${TIMESTAMP}.txt
+/usr/bin/scp $1@$2:/var/log/secure ${PATH}/sshlog-${TIMESTAMP}.txt
