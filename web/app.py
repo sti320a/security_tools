@@ -37,9 +37,13 @@ def test():
 
 def insert_log_to_db(log_file_path: str) -> bool:
     with open(log_file_path, 'r') as f:
-        log_text = f.readlines()
-        for line in log_text:
-            print(line.rstrip('\r\n'))
+        # log_text = f.readlines()
+        # for line in log_text:
+        # TODO: Extract necessary text
+        #
+        # log = SSHLog(from_ip='127.0.0.1', username='root')
+        # db.session.add(log)
+        # db.session.commit()
         f.close()
 
     return False
