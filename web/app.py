@@ -13,7 +13,7 @@ class SSHLog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     from_ip = db.Column(db.String(64), nullable=False)
     username = db.Column(db.String(64))
-    accessed_at = db.Column(db.DATETIME, default=datetime.now)
+    accessed_at = db.Column(db.DateTime, default=datetime.now)
 
     def __repr__(self):
         return f'SSHLOG <{self.id}>'
