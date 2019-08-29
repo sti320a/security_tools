@@ -37,8 +37,9 @@ def test():
 
 def insert_log_to_db(log_file_path: str) -> bool:
     with open(log_file_path, 'r') as f:
-        log_text = f.read()
-        print(log_text)
+        log_text = f.readlines()
+        for line in log_text:
+            print(line.rstrip('\r\n'))
         f.close()
 
     return False
