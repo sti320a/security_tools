@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 
 
 class SSHLog(db.Model):
-    # TODO: migrate for models dir
+    # TODO: move to models dir
     id = db.Column(db.Integer, primary_key=True)
     from_ip = db.Column(db.String(64), nullable=False)
     username = db.Column(db.String(64))
