@@ -27,11 +27,7 @@ def index():
 
 @app.route('/test')
 def test():
-    # TEST
     db.create_all()
-    # log = SSHLog(from_ip='127.0.0.1', username='root')
-    # db.session.add(log)
-    # db.session.commit()
     logs = SSHLog.query.all()
     return render_template('idx.html', logs=logs)
 
