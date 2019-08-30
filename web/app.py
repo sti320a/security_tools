@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from datetime import datetime
+import re
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -28,9 +29,9 @@ def index():
 def test():
     # TEST
     db.create_all()
-    log = SSHLog(from_ip='127.0.0.1', username='root')
-    db.session.add(log)
-    db.session.commit()
+    # log = SSHLog(from_ip='127.0.0.1', username='root')
+    # db.session.add(log)
+    # db.session.commit()
     logs = SSHLog.query.all()
     return render_template('idx.html', logs=logs)
 
@@ -40,14 +41,33 @@ def insert_log_to_db(log_file_path: str) -> bool:
         log_text = f.readlines()
         for row in log_text:
             # TODO: Extract necessary text
-            if 'Failed' in row:
-                print(row)
-                # log = SSHLog(from_ip='127.0.0.1', username='root')
-                # db.session.add(log)
-                # db.session.commit()
+            if 'Failed' in row and 'invalid user' in row:
+                row = row.rstrip('\n').rstrip('\r\n')
+
+                # Extract username
+                match_obj = re.search(r'user.*from', row)
+                username = match_obj.group(0)[5:-5]
+
+                # Extract from_ip
+                match_obj = re.search(r'from.*port', row)
+                from_ip = match_obj.group(0)[5:-5]
+
+                # Extract accessed_at
+                accessed_at = row[0:15]
+                accessed_at = datetime.strptime(accessed_at, '%b %d %H:%M:%S')
+
+                # Insert log
+                log = SSHLog(
+                    from_ip=from_ip,
+                    username=username,
+                    accessed_at=accessed_at
+                )
+                db.session.add(log)
+                db.session.commit()
+
         f.close()
 
-    return False
+    return True
 
 
 if __name__ == '__main__':
