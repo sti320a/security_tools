@@ -29,3 +29,8 @@ header {
     line-height: 48px;
     padding: 0 16px;
 }
+
+#logs_table {
+    margin: 32px auto;
+    width: 800px;
+}
