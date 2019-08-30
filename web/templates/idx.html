@@ -13,7 +13,7 @@
     </header>
     <main>
         {% for log in logs %}
-        <div>{{log.from_ip}}    {{log.username}}    {{log.accessed_at.strftime('%Y/%m/%d %H:%M:%S')}}</div>
+        <div>{{log.from_ip}}    {{log.username}}    {{log.accessed_at.strftime('%m/%d %H:%M:%S')}}</div>
         {% endfor %}
     </main>
 </body>
