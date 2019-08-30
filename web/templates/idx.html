@@ -12,9 +12,15 @@
         <div id="site_title">Not secure ips and users</div>
     </header>
     <main>
+        <table>
         {% for log in logs %}
-        <div>{{log.from_ip}}    {{log.username}}    {{log.accessed_at.strftime('%m/%d %H:%M:%S')}}</div>
+        <tr>
+        <td>{{log.from_ip}}</td>
+        <td>{{log.username}}</td>
+        <td>{{log.accessed_at.strftime('%m/%d %H:%M:%S')}}</td>
+        </tr>
         {% endfor %}
+        </table>
     </main>
 </body>
 </html>
