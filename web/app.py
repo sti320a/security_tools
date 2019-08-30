@@ -22,11 +22,6 @@ class SSHLog(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('idx.html')
-
-
-@app.route('/test')
-def test():
     db.create_all()
     logs = SSHLog.query.all()
     return render_template('idx.html', logs=logs)
