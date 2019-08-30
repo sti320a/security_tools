@@ -40,7 +40,6 @@ def insert_log_to_db(log_file_path: str) -> bool:
     with open(log_file_path, 'r') as f:
         log_text = f.readlines()
         for row in log_text:
-            # TODO: Extract necessary text
             if 'Failed' in row and 'invalid user' in row:
                 row = row.rstrip('\n').rstrip('\r\n')
 
