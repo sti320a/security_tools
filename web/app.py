@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 from config import Config
 from datetime import datetime
 import re
@@ -23,7 +24,7 @@ class SSHLog(db.Model):
 @app.route('/')
 def index():
     db.create_all()
-    logs = SSHLog.query.all()
+    logs = SSHLog.query.order_by(desc(SSHLog.accessed_at)).all()
     return render_template('idx.html', logs=logs)
 
 
