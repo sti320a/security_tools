@@ -35,16 +35,25 @@ def insert_log_to_db(log_file_path: str) -> bool:
                 row = row.rstrip('\n').rstrip('\r\n')
 
                 # Extract username
-                match_obj = re.search(r'user.*from', row)
+                match_obj = re.search(
+                    r'user.*from',
+                    row
+                )
                 username = match_obj.group(0)[5:-5]
 
                 # Extract from_ip
-                match_obj = re.search(r'from.*port', row)
+                match_obj = re.search(
+                    r'from.*port',
+                    row
+                )
                 from_ip = match_obj.group(0)[5:-5]
 
                 # Extract accessed_at
                 accessed_at = row[0:15]
-                accessed_at = datetime.strptime(accessed_at, '%b %d %H:%M:%S')
+                accessed_at = datetime.strptime(
+                    accessed_at,
+                    '%b %d %H:%M:%S'
+                )
 
                 # Insert log
                 log = SSHLog(
