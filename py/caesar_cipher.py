@@ -12,7 +12,6 @@ def try_decrypt(text: str) -> list:
     res = []
     for keynum in range(1, 27):
         res.append(generate_cryptogram(text, -keynum))
-    print(res)
     return res
 
 
