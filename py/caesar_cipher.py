@@ -8,5 +8,14 @@ def generate_cryptogram(text: str, keynum: int) -> str:
     return encrypted
 
 
+def try_decrypt(text: str) -> list:
+    res = []
+    for keynum in range(1, 27):
+        res.append(generate_cryptogram(text, -keynum))
+    print(res)
+    return res
+
+
 if __name__ == '__main__':
     print(generate_cryptogram('test', 1))
+    try_decrypt('uftu')
